@@ -114,6 +114,8 @@ class Issue(object):
     def record_complete_item(self, response):
         with open(completed_list, "a") as f:
             f.write(self.customer_tracking_ID + " >> " + response.json()["key"] + "\n")
+        with open("issue_add_to_DBSJira.txt", "a") as f:
+            f.write(self.customer_tracking_ID + "," + response.json()["key"] + "\n")
 
 if __name__ == "__main__":
 
