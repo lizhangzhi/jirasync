@@ -42,6 +42,11 @@ class Issue(object):
             self.project = "DBSGU"
         elif re.match("AB", self.customer_tracking_ID):
             self.project = "DBSPS"
+            self.assignee = "jgabay"
+            self.components = "CB - Other "
+            self.environment = "Production Env"
+            self.test_phase_old = "12.Production"
+            self.test_phase = "Product Acceptance Testing (PAT)"
 
         payload =\
         {
@@ -126,5 +131,5 @@ if __name__ == "__main__":
                     print(e)
                     with open(failed_list, 'a') as f:
                         print(issue.customer_tracking_ID)
-                        f.write(issue.customer_tracking_ID)
+                        f.write(issue.customer_tracking_ID + "\n")
                     continue

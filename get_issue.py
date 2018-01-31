@@ -6,6 +6,7 @@ from html.parser import HTMLParser
 class MyHTMLParser(HTMLParser):
     issue_no_indicator = ('class', 'issue-link')
     summary_indicator = ('id', 'summary-val')
+    # components_indicator = ("id", "components-val")
     description_indicator = ('class', 'user-content-block')
     indicators = [issue_no_indicator, summary_indicator]
 
@@ -47,6 +48,8 @@ class MyHTMLParser(HTMLParser):
                      issue.test_phase, issue.triage, issue.product, issue.description, issue.test_phase_old,
                      issue.customer_tracking_ID, issue.severity_old]
 
+        # print(data_list)
+
         with open('DBS_ISSUES_LIST.csv', 'a', newline='') as csvfile:
             print(issue.customer_tracking_ID)
             writer = csv.writer(csvfile)
@@ -77,7 +80,7 @@ if __name__ == "__main__":
     host = "https://116.12.252.147/"
     path = "dcifjira/browse/"
     username_password = ('huina', 'ideal3@pwd33')
-    issue_list = ["IDEAAA-40", "IDEAAA-41", "IDEAAA-42"]
+    issue_list = [""]
     for i in issue_list:
         try:
             r = requests.get(host+path+i, verify=False, auth=username_password)
@@ -85,5 +88,6 @@ if __name__ == "__main__":
             parser.feed(r.text)
             parser.write_value_into_file()
         except Exception as e:
+            print("get this issue failed,please retry")
             print(e)
             continue
