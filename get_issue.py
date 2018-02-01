@@ -48,7 +48,7 @@ class MyHTMLParser(HTMLParser):
                      issue.customer_tracking_ID, issue.severity_old]
 
         with open('DBS_ISSUES_LIST.csv', 'a', newline='') as csvfile:
-            print(issue.customer_tracking_ID)
+            print("Get issue %s successfully,already store data into DBS_ISSUES_LIST.csv" % issue.customer_tracking_ID)
             writer = csv.writer(csvfile)
             writer.writerow(data_list)
 
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     host = "https://116.12.252.147/"
     path = "dcifjira/browse/"
     username_password = ('huina', 'ideal3@pwd33')
-    issue_list = ["IDEAAA-1415"]
+    issue_list = [""]
     for i in issue_list:
         try:
             r = requests.get(host+path+i, verify=False, auth=username_password)
