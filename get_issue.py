@@ -59,7 +59,7 @@ class Issue(object):
         self.issue_type = "Bug"  # line[2]
         self.versions = "PendingBuild"  # line[3]
         self.components = "Cash - Generic"  # line[4]
-        self.assignee = "cluwei"  # line[5]
+        self.assignee = "cailuk"  # line[5]
         self.reporter = "lieric"  # line[6]
         self.severity = "Minor"  # line[7]
         self.priority = "Minor"  # line[8]
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     host = "https://116.12.252.147/"
     path = "dcifjira/browse/"
     username_password = ('huina', 'ideal3@pwd33')
-    issue_list = [""]
+    issue_list = ["IDEAAA-1415"]
     for i in issue_list:
         try:
             r = requests.get(host+path+i, verify=False, auth=username_password)
